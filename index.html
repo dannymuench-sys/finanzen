@@ -61,12 +61,12 @@ h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute
 .btn.soft{background:var(--soft);border-color:transparent;color:var(--accent)}
 .btn.danger{color:var(--neg)}
 .btn.block{width:100%}
-.btn.sm{min-height:34px;padding:6px 10px;font-size:14px;border-radius:10px}
+.btn.sm{min-height:44px;padding:6px 10px;font-size:14px;border-radius:10px}
 .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--soft);color:var(--accent)}
 .pill.warn{background:var(--warn-bg);color:var(--warn)}
 .pill.gray{background:var(--gray);color:var(--muted)}
 .seg{display:flex;background:var(--gray);border-radius:12px;padding:3px;gap:3px}
-.seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:9px 6px;font-weight:600;font-size:15px;cursor:pointer;color:var(--muted)}
+.seg button{flex:1;min-height:44px;border:0;background:transparent;border-radius:9px;padding:9px 6px;font-weight:600;font-size:15px;cursor:pointer;color:var(--muted)}
 .seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .list{background:var(--card);border-radius:18px;border:1px solid var(--line);overflow:hidden;margin-bottom:12px}
 .item{display:flex;gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;cursor:pointer}
@@ -94,31 +94,32 @@ nav.tabs svg{width:24px;height:24px}
 .grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:4px auto 10px}
 .sheet .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .sheet .head h2{margin:0}
-.x{border:0;background:var(--gray);width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;color:var(--muted)}
+.x{position:relative;border:0;background:var(--gray);width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;color:var(--muted)}
+.x::after{content:'';position:absolute;inset:-6px}
 label.f{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:14px 4px 6px}
 input.in,select.in{width:100%;border:1px solid var(--field);background:var(--card);border-radius:12px;padding:12px;font-size:17px;min-height:46px}
 input.amount{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
 select.in{appearance:none;-webkit-appearance:none}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.chip{border:1px solid var(--field);background:var(--card);border-radius:99px;padding:7px 12px;font-size:14px;font-weight:600;cursor:pointer}
+.chip{min-height:44px;border:1px solid var(--field);background:var(--card);border-radius:99px;padding:7px 12px;font-size:14px;font-weight:600;cursor:pointer}
 .chip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .chip.plan{border-color:var(--accent);color:var(--accent)}
 .conv{min-height:22px;margin:8px 4px 0;font-size:15px}
 .linkbox{margin-top:12px;padding:12px;border-radius:12px;background:var(--soft);font-size:14px;display:flex;gap:10px;align-items:flex-start}
 .linkbox input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--accent)}
 details.more{margin-top:12px}
-details.more summary{font-size:14px;color:var(--accent);font-weight:600;cursor:pointer;padding:6px 4px}
+details.more summary{font-size:14px;color:var(--accent);font-weight:600;cursor:pointer;padding:12px 4px}
 .foot{display:flex;gap:8px;margin-top:20px}
 .foot .btn{flex:1}
 #toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:600;z-index:30;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
 #toast.show{opacity:1}
 .imp-row{padding:10px 14px;border-top:1px solid var(--line)}
 .imp-row:first-child{border-top:0}
-.imp-row select{margin-top:6px;font-size:15px;min-height:38px;padding:6px 10px}
+.imp-row select{margin-top:6px;font-size:16px;min-height:44px;padding:6px 10px}
 .empty{padding:28px 16px;text-align:center;color:var(--muted)}
 .monthnav{display:flex;align-items:center;justify-content:space-between;margin:4px 0 10px}
 .monthnav b{font-size:18px}
-.icon-btn{background:var(--card);border:1px solid var(--field);border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
+.icon-btn{background:var(--card);border:1px solid var(--field);border-radius:10px;width:44px;height:44px;font-size:18px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -459,7 +460,7 @@ function viewMore(){
   </div><div class="sec"><h3>Daten</h3><div class="card small">
     <div class="muted">${live(S.entries).length} Buchungen · ${live(S.plans).length} wiederkehrende Posten. Alles liegt nur auf diesem Gerät.</div>
     <button class="btn danger block" style="margin-top:10px" data-act="wipe">Alle Daten auf diesem Gerät löschen</button></div>
-  </div></div><div class="tiny muted" style="text-align:center;margin-top:16px">Finanzen · Version 1.0</div>`;
+  </div></div><div class="tiny muted" style="text-align:center;margin-top:16px">Finanzen · Version 1.1</div>`;
 }
 
 /* ================= Sheet (Eingabefenster) ================= */
@@ -566,7 +567,7 @@ function entrySheet(opts){
         Object.assign(o,{status:'done',date:date.value,deleted:false,fx:r||null});
         if(c===p.currency){o.amount=v;o.manualAcc=manual>0;if(manual>0)o.accountAmount=manual}
         else{const m=r?r.eur:(R.latest&&R.latest.eur);o.amount=conv(v,c,p.currency,m)??v;o.manualAcc=true;o.accountAmount=manual>0?manual:(c===A.currency?v:conv(v,c,A.currency,m))}
-        if(o.fx)applyOccFx(o);else{o.eurAmount=null}
+        if(o.fx)applyOccFx(o);else{if(!o.manualAcc)o.accountAmount=convLatest(o.amount,p.currency,acc(p.accountId).currency);o.eurAmount=p.currency==='EUR'?o.amount:null}
         touch(o);rememberCur(A.id,c);save();closeSheet();render();toast('Gespeichert – „'+p.name+'“ bestätigt');return;
       }
       const x=e||{id:uid(),createdAt:nowISO()};
@@ -703,7 +704,7 @@ function occSheet(occId){
     const rec=()=>{let x=S.occ.find(y=>y.id===occId);if(!x){x={id:occId,planId:pid,due};S.occ.push(x)}x.deleted=false;return x};
     root.querySelector('#o-ok').onclick=async()=>{const v=parseNum(root.querySelector('#o-amount').value,p.currency);if(!(v>0)){toast('Bitte Betrag eingeben');return}
       const d=root.querySelector('#o-date').value;const x=rec();Object.assign(x,{status:'done',amount:v,date:d,manualAcc:false,fx:await ratesFor(d)});
-      if(x.fx)applyOccFx(x);else{x.accountAmount=convLatest(v,p.currency,a.currency);x.eurAmount=null}
+      if(x.fx)applyOccFx(x);else{x.accountAmount=convLatest(v,p.currency,a.currency);x.eurAmount=p.currency==='EUR'?v:null}
       touch(x);save();closeSheet();render();toast('Bestätigt')};
     root.querySelector('#o-skip').onclick=()=>{const x=rec();x.status='skipped';x.date=due;touch(x);save();closeSheet();render();toast('Übersprungen')};
     if(o)root.querySelector('#o-reset').onclick=()=>{o.deleted=true;touch(o);save();closeSheet();render()};
@@ -746,7 +747,7 @@ $('#file-sync').addEventListener('change',async ev=>{
 const CSV_HEAD='datum;konto;betrag;beschreibung;kategorie;originalbetrag;originalwaehrung;saldo';
 const PROMPT=`Wandle den angehängten Kontoauszug in eine CSV-Datei für meine Finanz-App um. Regeln:
 - Trennzeichen Semikolon. Erste Zeile genau: ${CSV_HEAD}
-- datum: Buchungsdatum im Format JJJJ-MM-TT
+- datum: Buchungsdatum im Format JJJJ-MM-TT. Zeilen chronologisch sortieren, älteste zuerst
 - konto: KZT für das kasachische Konto, EUR für das deutsche Konto
 - betrag: in der Kontowährung, genau so wie abgebucht bzw. gutgeschrieben. Ausgaben negativ, Einnahmen positiv. Punkt als Dezimalzeichen, keine Tausenderpunkte (z. B. -21500 oder -49.99)
 - beschreibung: Händler bzw. Verwendungszweck, kurz und einheitlich (gleicher Händler = gleicher Text)
@@ -756,7 +757,7 @@ const PROMPT=`Wandle den angehängten Kontoauszug in eine CSV-Datei für meine F
 - Keine Zeile weglassen, nichts zusammenfassen, nichts erfinden. Wenn etwas unklar ist, sag es mir statt zu raten.
 Gib mir das Ergebnis als .csv-Datei.`;
 function parseCSV(text){
-  text=text.replace(/^﻿/,'');const first=text.split(/\r?\n/)[0]||'';
+  text=text.replace(/^\uFEFF/,'');const first=text.split(/\r?\n/)[0]||'';
   const delim=[';',',','\t'].sort((a,b)=>first.split(b).length-first.split(a).length)[0];
   const rows=[];let row=[],f='',q=false;
   for(let i=0;i<text.length;i++){const ch=text[i];
@@ -766,7 +767,7 @@ function parseCSV(text){
     else f+=ch}
   row.push(f);if(row.some(c=>c.trim()))rows.push(row);return rows;
 }
-const normH=h=>h.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z]/g,'');
+const normH=h=>h.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]/g,'');
 const HMAP={datum:'date',date:'date',buchungsdatum:'date',konto:'konto',account:'konto',betrag:'betrag',amount:'betrag',beschreibung:'desc',verwendungszweck:'desc',text:'desc',description:'desc',kategorie:'cat',category:'cat',originalbetrag:'oamt',originalwaehrung:'ocur',originalwahrung:'ocur',saldo:'saldo',kontostand:'saldo',balance:'saldo'};
 function parseDate(s){s=(s||'').trim();let m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);if(m)return m[1]+'-'+z(+m[2])+'-'+z(+m[3]);
   m=s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{2,4})/);if(m){const y=m[3].length===2?'20'+m[3]:m[3];return y+'-'+z(+m[2])+'-'+z(+m[1])}return null}
@@ -776,17 +777,19 @@ function analyzeImport(text,defAcc){
   const raw=parseCSV(text);if(raw.length<2)throw new Error('Die Datei enthält keine Buchungen.');
   const head=raw[0].map(h=>HMAP[normH(h)]||null);
   if(!head.includes('date')||!head.includes('betrag'))throw new Error('Spalten „datum“ und „betrag“ fehlen. Nutze die Vorlage bzw. die Anleitung für Claude.');
-  const rows=[],errs=[],seen=new Set();
+  const rows=[],errs=[],seen=new Map(),claimed=new Set();
   raw.slice(1).forEach((r,i)=>{const o={};head.forEach((k,j)=>{if(k)o[k]=(r[j]||'').trim()});
     const date=parseDate(o.date),accId=resolveAcc(o.konto,defAcc),A=accId&&acc(accId);
     const signed=A?parseNum(o.betrag,A.currency):NaN;
     if(!date||!A||isNaN(signed)||signed===0){errs.push(i+2);return}
     const oamt=o.oamt?Math.abs(parseNum(o.oamt,(o.ocur||'').toUpperCase())):null,ocur=(o.ocur||'').trim().toUpperCase()||null;
     const row={n:i+2,date,accId,A,kind:signed>0?'income':'expense',amt:Math.abs(signed),desc:o.desc||'',cat:o.cat||'',oamt:oamt&&ocur&&ocur!==A.currency?oamt:null,ocur:oamt&&ocur&&ocur!==A.currency?ocur:null,saldo:o.saldo?parseNum(o.saldo,A.currency):null};
-    row.key=[accId,date,signed.toFixed(2),row.desc.toLowerCase().slice(0,40)].join('|');
-    // 1) exakt schon importiert / doppelt in Datei
-    if(seen.has(row.key)||S.entries.some(e=>!e.deleted&&e.importKey===row.key)||S.occ.some(x=>!x.deleted&&x.importKey===row.key)){row.status='dup';row.reason='Bereits importiert';row.action='skip';rows.push(row);return}
-    seen.add(row.key);
+    // Gleiche Zeile mehrfach in der Datei (z. B. zweimal derselbe Kaffee) bekommt eine laufende Nummer
+    const baseKey=[accId,date,signed.toFixed(2),row.desc.toLowerCase().slice(0,40)].join('|');
+    const nth=(seen.get(baseKey)||0)+1;seen.set(baseKey,nth);
+    row.key=nth>1?baseKey+'#'+nth:baseKey;
+    // 1) exakt schon importiert
+    if(S.entries.some(e=>!e.deleted&&e.importKey===row.key)||S.occ.some(x=>!x.deleted&&x.importKey===row.key)){row.status='dup';row.reason='Bereits importiert';row.action='skip';rows.push(row);return}
     // 2) ähnliche Buchung schon vorhanden (z. B. von Hand eingetragen)
     const close=(v)=>v!=null&&Math.abs(v-row.amt)<=Math.max(1,row.amt*0.01);
     const sims=[];
@@ -806,22 +809,24 @@ function analyzeImport(text,defAcc){
       const exp=p.currency===A.currency?p.amount:convLatest(p.amount,p.currency,A.currency);
       const amtOk=exp!=null&&Math.abs(exp-row.amt)<=exp*0.2;
       if(!kw&&!amtOk)continue;
-      const due=openPlanOcc(p,date);if(!due||Math.abs(daysBetween(due,date))>12)continue;
+      const due=openPlanOcc(p,date);if(!due||claimed.has(p.id+'@'+due)||Math.abs(daysBetween(due,date))>12)continue;
       cands.push({p,due,kw,amtOk})}
     row.options=cands.map(c=>({v:'plan:'+c.p.id+'@'+c.due,label:'Als „'+c.p.name+'“ ('+dShort(c.due)+') verbuchen'}));
     const strong=cands.filter(c=>c.kw);
     if(sims.length){row.status='unclear';row.reason='Ähnlich: '+sims[0].label;row.action='skip'}
-    else if(strong.length===1){row.status='plan';row.reason='Gehört zu „'+strong[0].p.name+'“';row.action='plan:'+strong[0].p.id+'@'+strong[0].due}
+    else if(strong.length===1){row.status='plan';row.reason='Gehört zu „'+strong[0].p.name+'“';row.action='plan:'+strong[0].p.id+'@'+strong[0].due;claimed.add(strong[0].p.id+'@'+strong[0].due)}
     else if(cands.length){row.status='unclear';row.reason=strong.length>1?'Passt zu mehreren Posten':'Betrag passt zu „'+cands[0].p.name+'“';row.action='add'}
     else{row.status='new';row.reason='';row.action='add'}
+    if(nth>1){row.status='unclear';row.reason='Diese Buchung steht '+nth+'× in der Datei – wirklich mehrfach bezahlt?'}
     rows.push(row);
   });
   return{rows,errs};
 }
 function importSheet(res){
   const {rows,errs}=res;const cnt=s=>rows.filter(r=>r.status===s).length;
-  const last=[...rows].reverse().find(r=>r.saldo!=null&&!isNaN(r.saldo));
-  const latestSaldo={};for(const r of rows)if(r.saldo!=null&&!isNaN(r.saldo)){const c=latestSaldo[r.accId];if(!c||r.date>=c.date)latestSaldo[r.accId]=r}
+  // Neuester Saldo je Konto. Bei gleichem Tag zählt die zeitlich letzte Zeile (Auszug kann auf- oder absteigend sortiert sein)
+  const newestFirst=rows.length>1&&rows[0].date>rows[rows.length-1].date;
+  const latestSaldo={};for(const r of rows)if(r.saldo!=null&&!isNaN(r.saldo)){const c=latestSaldo[r.accId];if(!c||r.date>c.date||(r.date===c.date&&!newestFirst))latestSaldo[r.accId]=r}
   const tag={new:'<span class="pill">neu</span>',plan:'<span class="pill">wiederkehrend</span>',dup:'<span class="pill gray">doppelt</span>',unclear:'<span class="pill warn">unklar – bitte prüfen</span>'};
   const html=`<div class="small muted">${rows.length} Zeilen gelesen: ${cnt('new')} neu · ${cnt('plan')} zugeordnet · ${cnt('dup')} doppelt · <b>${cnt('unclear')} unklar</b>${errs.length?' · '+errs.length+' nicht lesbar (Zeile '+errs.slice(0,6).join(', ')+(errs.length>6?' …':'')+')':''}</div>
     ${Object.keys(latestSaldo).length?`<label class="linkbox"><input type="checkbox" id="i-saldo" checked><span>Kontostand danach auf den Saldo laut Auszug setzen: ${Object.values(latestSaldo).map(r=>esc(r.A.name)+' '+fmt(r.saldo,r.A.currency)+' ('+dShort(r.date)+')').join(', ')}</span></label>`:''}
@@ -882,8 +887,8 @@ document.addEventListener('click',async ev=>{
     case 'sync-save':syncSave();break;
     case 'sync-load':$('#file-sync').click();break;
     case 'csv':$('#file-csv').click();break;
-    case 'template':download(new Blob(['﻿'+CSV_HEAD+'\n2026-11-03;KZT;-21500;MOL Tankstelle;Tanken & Auto;-15000;HUF;\n2026-11-05;EUR;-49.99;Beispiel Kreditrate;Kredit;;;1234.56\n'],{type:'text/csv'}),'finanzen-vorlage.csv');break;
-    case 'prompt':try{await navigator.clipboard.writeText(PROMPT);toast('Anleitung kopiert – in Claude einfügen und Auszug anhängen')}catch(e){openSheet('Anleitung für Claude',`<textarea class="in" style="height:340px;font-size:14px">${esc(PROMPT)}</textarea>`)}break;
+    case 'template':download(new Blob(['\uFEFF'+CSV_HEAD+'\n2026-11-03;KZT;-21500;MOL Tankstelle;Tanken & Auto;-15000;HUF;\n2026-11-05;EUR;-49.99;Beispiel Kreditrate;Kredit;;;1234.56\n'],{type:'text/csv'}),'finanzen-vorlage.csv');break;
+    case 'prompt':try{await navigator.clipboard.writeText(PROMPT);toast('Anleitung kopiert – in Claude einfügen und Auszug anhängen')}catch(e){openSheet('Anleitung für Claude',`<textarea class="in" style="height:340px;font-size:16px">${esc(PROMPT)}</textarea>`)}break;
     case 'save-settings':{const v=parseNum($('#set-cushion').value,'EUR');S.settings.cushionEUR=isNaN(v)?0:v;touch(S.settings);
       document.querySelectorAll('[data-rename]').forEach(i=>{const a=acc(i.dataset.rename);const n=i.value.trim();if(n&&n!==a.name){a.name=n;touch(a)}});save();render();toast('Gespeichert');break}
     case 'wipe':if(confirm('Wirklich ALLE Daten auf diesem Gerät löschen? Das kann nicht rückgängig gemacht werden.')&&confirm('Ganz sicher? Speichere vorher eine Sync-Datei, wenn du die Daten behalten willst.')){localStorage.removeItem(KEY);localStorage.removeItem(LKEY);location.reload()}break;
@@ -894,7 +899,7 @@ window.addEventListener('offline',render);
 
 render();
 refreshLatest(false).then(()=>backfill()).then(render);
-if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
 </html>
