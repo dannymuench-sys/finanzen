@@ -146,7 +146,7 @@ const SYM={KZT:'₸',EUR:'€',HUF:'Ft',USD:'$',GBP:'£',CHF:'CHF',CZK:'Kč',PLN
 const CURRENCIES=Object.keys(SYM);
 const DEC={KZT:0,HUF:0,UZS:0,KGS:0};
 const CATS=['Lebensmittel','Restaurant & Café','Tanken & Auto','Flug & Reise','Wohnen','Kredit','Software & Abos','Versicherung','Gesundheit','Shopping','Lohn','Umbuchung','Sonstiges'];
-const RHYTHM=[['m1','monatlich'],['m3','vierteljährlich'],['m6','halbjährlich'],['y1','jährlich'],['w1','wöchentlich'],['w2','alle 2 Wochen'],['once','einmalig']];
+const RHYTHM=[['m1','monatlich'],['m3','vierteljährlich'],['m6','halbjährlich'],['y1','jährlich'],['y2','alle 2 Jahre'],['w1','wöchentlich'],['w2','alle 2 Wochen'],['once','einmalig']];
 const MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 
 const $=s=>document.querySelector(s);
@@ -425,7 +425,7 @@ function viewList(){
 function viewPlan(){
   const t=today();let h=`<div class="small muted" style="margin:0 4px 12px">Alles, was regelmäßig abgeht oder reinkommt. Die Namen hier erscheinen beim Eintragen als Auswahl.</div><div class="narrow">${monthlyCard()}</div><div class="plancols">`;
   for(const a of [eurAcc(),masterAcc()]){
-    const ps=live(S.plans).filter(p=>p.accountId===a.id).sort((x,y)=>(x.kind>y.kind?1:-1)||x.name.localeCompare(y.name));
+    const ps=live(S.plans).filter(p=>p.accountId===a.id).sort((x,y)=>(x.kind===y.kind?0:x.kind>y.kind?1:-1)||x.name.localeCompare(y.name,'de'));
     h+=`<div><h3>${esc(a.name)}</h3>`;
     if(!ps.length){h+=`<div class="card empty small">Noch nichts angelegt.</div></div>`;continue}
     h+=`<div class="list">${ps.map(p=>{const nx=occurrences(p,t,addDays(t,800))[0];const ended=p.end&&p.end<t;
@@ -460,7 +460,7 @@ function viewMore(){
   </div><div class="sec"><h3>Daten</h3><div class="card small">
     <div class="muted">${live(S.entries).length} Buchungen · ${live(S.plans).length} wiederkehrende Posten. Alles liegt nur auf diesem Gerät.</div>
     <button class="btn danger block" style="margin-top:10px" data-act="wipe">Alle Daten auf diesem Gerät löschen</button></div>
-  </div></div><div class="tiny muted" style="text-align:center;margin-top:16px">Finanzen · Version 1.1</div>`;
+  </div></div><div class="tiny muted" style="text-align:center;margin-top:16px">Finanzen · Version 1.2</div>`;
 }
 
 /* ================= Sheet (Eingabefenster) ================= */
@@ -661,7 +661,7 @@ function planSheet(id){
     <label class="f">Name</label><input class="in" id="p-name" placeholder="z. B. Flugbuchung, Ratenkredit" value="${esc(p?p.name:'')}">
     <label class="f">Konto</label>${segHTML('p-acc',S.accounts.map(x=>[x.id,x.name]),p?p.accountId:eurAcc().id)}
     <label class="f">Betrag (geplant)</label><div class="row"><input class="in amount grow" id="p-amount" inputmode="decimal" value="${p?String(p.amount).replace('.',','):''}"><select class="in" id="p-cur" style="width:110px">${curOptions(p?p.currency:'EUR')}</select></div>
-    <label class="f">Rhythmus</label><select class="in" id="p-rhythm">${RHYTHM.map(([k,l])=>`<option value="${k}" ${k===rk?'selected':''}>${l}</option>`).join('')}</select>
+    <label class="f">Rhythmus</label><select class="in" id="p-rhythm">${(RHYTHM.some(r=>r[0]===rk)?RHYTHM:RHYTHM.concat([[rk,rhythmText(p)]])).map(([k,l])=>`<option value="${k}" ${k===rk?'selected':''}>${l}</option>`).join('')}</select>
     <label class="f" id="p-startlabel">Erste Fälligkeit</label><input class="in" type="date" id="p-start" value="${p?p.start:today()}">
     <div class="tiny muted" style="margin:6px 4px 0">Der Tag im Monat ergibt sich aus diesem Datum (z. B. 05. → immer am 5.).</div>
     <details class="more" ${p&&(p.end||p.match||p.category)?'open':''}><summary>Weitere Angaben</summary>

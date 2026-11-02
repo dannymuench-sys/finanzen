@@ -1,7 +1,7 @@
 // Service Worker: hält die App offline verfügbar.
 // Finanzdaten liegen NICHT hier, sondern nur im localStorage des Geräts.
 // Bei jeder Änderung an der App die Versionsnummer erhöhen.
-const CACHE = 'finanzen-v1.1';
+const CACHE = 'finanzen-v1.2';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
